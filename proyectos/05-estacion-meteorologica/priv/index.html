@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Estación Meteorológica</title>
+<style>
+  body{font-family:sans-serif;max-width:700px;margin:2rem auto;padding:0 1rem}
+  table{border-collapse:collapse;width:100%}
+  td,th{border:1px solid #ccc;padding:.5rem;text-align:center}
+  th{background:#eef}
+</style>
+</head>
+<body>
+<h1>Estación Meteorológica</h1>
+<table>
+  <thead><tr><th>Variable</th><th>Promedio 1 min</th><th>Promedio 1 h</th></tr></thead>
+  <tbody id="tabla"></tbody>
+</table>
+<script>
+const campos = {temperatura:"Temperatura (°C)", humedad:"Humedad (%)",
+                presion:"Presión (hPa)", viento:"Viento (km/h)"};
+const f = v => v === null || v === undefined ? "—" : v.toFixed(1);
+async function refresh(){
+  const r = await fetch('/api/promedios');
+  const d = await r.json();
+  const m = d["1min"] || {}, h = d["1h"] || {};
+  document.getElementById('tabla').innerHTML = Object.keys(campos).map(c =>
+    `<tr><td>${campos[c]}</td><td>${f(m[c])}</td><td>${f(h[c])}</td></tr>`).join('');
+}
+setInterval(refresh, 3000); refresh();
+</script>
+</body>
+</html>
