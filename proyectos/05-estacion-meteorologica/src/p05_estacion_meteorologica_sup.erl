@@ -1,20 +1,23 @@
 -module(p05_estacion_meteorologica_sup).
 -behaviour(supervisor).
-
 -export([start_link/0]).
 -export([init/1]).
 
 start_link() ->
-  supervisor:start_link({local, ?MODULE}, ?MODULE, []).
+    supervisor:start_link({local, ?MODULE}, ?MODULE, []).
 
-%% TODO(equipo): agregar aqui los supervisores/workers del dominio. one_for_one porque
-%% por ahora los hijos son independientes; cambiar a rest_for_one si hay orden de arranque.
+%% rest_for_one: si muere un hijo, se reinician tambien los que arrancaron
+%% despues. El store (dueño de la ETS) va primero: si muere, todos se reinician.
 init([]) ->
-  Children = [
-    #{id => p05_estacion_meteorologica_server,
-      start => {p05_estacion_meteorologica_server, start_link, []},
-      restart => permanent,
-      shutdown => 5000,
-      type => worker}
-  ],
-  {ok, {#{strategy => one_for_one, intensity => 10, period => 60}, Children}}.
+    Worker = fun(Mod) ->
+        #{id => Mod,
+          start => {Mod, start_link, []},
+          restart => permanent,
+          shutdown => 5000,
+          type => worker}
+    end,
+    Children = [Worker(p05_estacion_meteorologica_store),
+                Worker(p05_estacion_meteorologica_server),
+                Worker(p05_estacion_meteorologica_agregador),
+                Worker(p05_estacion_meteorologica_sensor)],
+    {ok, {#{strategy => rest_for_one, intensity => 10, period => 60}, Children}}.
