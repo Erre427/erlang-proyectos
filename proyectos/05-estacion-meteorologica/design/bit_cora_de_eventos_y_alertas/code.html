@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-primary-container":"#fdfcff","background":"#faf8ff","primary-fixed":"#cce5ff","primary":"#006194","surface-container-high":"#e2e7ff","primary-fixed-dim":"#93ccff","inverse-surface":"#283044","on-tertiary-fixed":"#2a1700","surface-container-lowest":"#ffffff","tertiary-fixed":"#ffddb8","surface-container-low":"#f2f3ff","surface-tint":"#006398","on-secondary-fixed":"#002113","primary-container":"#007bb9","secondary":"#006c49","surface-container-highest":"#dae2fd","surface":"#faf8ff","outline":"#707881","error":"#ba1a1a","on-tertiary-fixed-variant":"#653e00","on-secondary":"#ffffff","on-tertiary-container":"#fffbff","on-surface":"#131b2e","on-secondary-container":"#00714d","on-primary-fixed":"#001d31","surface-dim":"#d2d9f4","on-primary":"#ffffff","secondary-fixed":"#6ffbbe","tertiary-container":"#a36700","surface-variant":"#dae2fd","on-primary-fixed-variant":"#004b73","outline-variant":"#bfc7d2","secondary-fixed-dim":"#4edea3","surface-bright":"#faf8ff","on-tertiary":"#ffffff","on-error-container":"#93000a","on-background":"#131b2e","tertiary":"#825100","tertiary-fixed-dim":"#ffb95f","inverse-on-surface":"#eef0ff","inverse-primary":"#93ccff","error-container":"#ffdad6","on-error":"#ffffff","secondary-container":"#6cf8bb","on-surface-variant":"#3f4850","surface-container":"#eaedff","on-secondary-fixed-variant":"#005236"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"space-xl":"2rem","space-xs":"0.25rem","margin":"2rem","space-md":"1rem","margin-mobile":"1rem","gutter":"1.5rem","space-lg":"1.5rem","space-sm":"0.5rem","gutter-sm":"1rem"},fontFamily:{"headline-sm":["Plus Jakarta Sans"],"body-lg":["Inter"],"body-sm":["Inter"],"display-lg-mobile":["Plus Jakarta Sans"],"telemetry-val-lg":["JetBrains Mono"],"display-lg":["Plus Jakarta Sans"],"label-caps":["JetBrains Mono"],"body-md":["Inter"],"telemetry-val-md":["JetBrains Mono"],"headline-lg":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"]},fontSize:{"headline-sm":["16px",{"lineHeight":"24px","letterSpacing":"-0.005em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}],"display-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"700"}],"telemetry-val-lg":["32px",{"lineHeight":"36px","letterSpacing":"-0.03em","fontWeight":"600"}],"display-lg":["36px",{"lineHeight":"44px","letterSpacing":"-0.02em","fontWeight":"700"}],"label-caps":["11px",{"lineHeight":"16px","letterSpacing":"0.06em","fontWeight":"500"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"telemetry-val-md":["20px",{"lineHeight":"24px","letterSpacing":"-0.02em","fontWeight":"500"}],"headline-lg":["24px",{"lineHeight":"32px","letterSpacing":"-0.015em","fontWeight":"600"}],"headline-md":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between"><div class="flex flex-col"><div class="h-16 px-space-md flex items-center gap-space-sm bg-surface-container-lowest"><img alt="Logo Estación Meteorológica" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrCr3ky4hDOIZiakhfmHr3sQOcv_ItCTh4TRRKcnjj1JDYOYY5YgRWikMGGSLFRA2sf7o9QPCQVnRimQkqahundRRBoWqhZ2CmBbfwPYnosG6GmV-8oXFPD37Ik6Z1_1d21kdYHsQ4KsmaDJeY5nBJPnKSQ0ROuXEWDkGQM9TxA_W-ak_l6xAWy04ckUFqnRHmM5ZGdiBmyqn8S6d5YEOE3NpPbV7URmYTc4dF_RgrU_"/><div class="flex flex-col min-w-0"><span class="font-headline-sm text-headline-sm text-on-surface truncate">Estación Agro</span><span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider truncate">Agro-IoT Telemetría</span></div></div><div class="px-space-md py-space-sm"><div class="h-px w-full bg-surface-container-high mb-space-sm"></div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-headline-sm"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span class="font-body-md text-body-md">Dashboard</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="detalle" href="#"><span class="material-symbols-outlined text-[20px]">thermostat</span><span class="font-body-md text-body-md">Detalle</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="bitacora" href="#"><span class="material-symbols-outlined text-[20px]">history_edu</span><span class="font-body-md text-body-md">Bitácora</span></a></nav></div></div><div class="p-space-md bg-surface-container-low flex flex-col gap-space-sm"><div class="flex items-center justify-between px-space-sm py-space-xs bg-surface-container-lowest rounded-lg"><div class="flex items-center gap-space-xs"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span></span><span class="font-label-caps text-label-caps text-secondary font-semibold">Nodo Central: Activo</span></div><span class="font-label-caps text-label-caps text-on-surface-variant">v2.4.1</span></div><div class="flex items-center gap-space-sm pt-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWXVBLOcXMq4uC4KBwylkDFE8oQNt03WINxqTd90LEAB2W1HMd1iAws4bBj1eTDojGF-cl9uS7g0RLJYZOjY1MsyGQYOkzHA78l1OBXoKWvvVHXDMvrDn7GWyCnmnBzM7NU3vF_o7JMgCPfrrcPzed6rN2tNZyvnxX-c1ngNYvItKD2wTsPYwuMg2Cl4qYEKgWUrflF5FUUrRXFQLkoZFOQ5L59-jZgG-Blg5UosM"/><div class="flex flex-col min-w-0"><span class="font-body-sm text-body-sm font-semibold text-on-surface truncate">Ing. M. Aranda</span><span class="font-label-caps text-label-caps text-on-surface-variant truncate">Técnico de Campo</span></div></div></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-16 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-sm"><span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Red LoRaWAN</span><span class="text-outline-variant font-label-caps text-label-caps">/</span><span class="font-label-caps text-label-caps text-on-surface font-semibold uppercase">Estación Meteorológica Norte</span></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-container text-on-surface-variant"><span class="material-symbols-outlined text-[16px] text-secondary">sync</span><span class="font-label-caps text-label-caps font-medium">Última sync: Hace 3 seg</span></div><div class="flex items-center gap-space-xs"><button class="p-space-xs text-on-surface-variant hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span></button><button class="p-space-xs text-on-surface-variant hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">settings</span></button></div></div></header><main class="w-full pt-16 bg-surface flex-1"><div class="w-full max-w-[1440px] mx-auto p-space-lg"><div class="flex flex-col w-full">
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const bitacoraLink = document.querySelector('aside nav a[data-path="bitacora"]');
+      if (bitacoraLink) {
+        document.querySelectorAll('aside nav a').forEach(el => {
+          el.className = "flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all";
+        });
+        bitacoraLink.className = "flex items-center gap-space-sm px-space-md py-space-sm rounded-lg bg-primary-container text-on-primary-container font-headline-sm shadow-sm";
+      }
+    });
+  </script>
+<!-- SECCIÓN SUPERIOR: TÍTULOS Y CONTROLES GLOBALES -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md mb-space-lg">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-primary font-label-caps text-label-caps tracking-widest uppercase">
+<span class="material-symbols-outlined text-[16px]">terminal</span>
+<span>Módulo de Supervisión &amp; Auditoría</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Bitácora del Sistema y Registro de Auditoría IoT</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Historial cronológico de eventos de hardware, telemetría y supervisión de procesos de campo</p>
+</div>
+<!-- Acciones Principales -->
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-surface-container-lowest text-on-surface shadow-sm hover:bg-surface-container transition-all" type="button">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">restart_alt</span>
+<span class="font-body-md text-body-md font-medium">Limpiar Filtros</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-primary text-on-primary shadow-sm hover:bg-primary-container transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span class="font-body-md text-body-md font-medium">Descargar Log (.LOG / .JSON)</span>
+</button>
+</div>
+</div>
+<!-- TARJETAS DE RESUMEN DE SALUD (3 MÉTRICAS) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg mb-space-lg">
+<!-- Métrica 1: OK -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute right-0 top-0 w-24 h-24 bg-secondary-fixed/20 rounded-bl-full pointer-events-none transition-transform group-hover:scale-110"></div>
+<div class="flex items-start justify-between mb-space-md">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Salud Operacional</span>
+<span class="font-headline-sm text-headline-sm text-on-surface mt-1">Eventos Normales (OK)</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-secondary-fixed/40 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-telemetry-val-lg text-telemetry-val-lg text-on-surface">92.2%</span>
+<span class="font-label-caps text-label-caps text-secondary font-semibold">Tasa de Estabilidad</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full mt-space-sm overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 92.2%;"></div>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs block">Tiempo de actividad nominal sin degradación</span>
+</div>
+</div>
+<!-- Métrica 2: Alertas -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute right-0 top-0 w-24 h-24 bg-tertiary-fixed/30 rounded-bl-full pointer-events-none transition-transform group-hover:scale-110"></div>
+<div class="flex items-start justify-between mb-space-md">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Supervisión Predictiva</span>
+<span class="font-headline-sm text-headline-sm text-on-surface mt-1">Alertas Atendidas</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-tertiary-fixed/50 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-telemetry-val-lg text-telemetry-val-lg text-on-surface">86</span>
+<span class="font-label-caps text-label-caps text-tertiary font-semibold">Eventos de Umbral</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full mt-space-sm overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 6.1%;"></div>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs block">86 advertencias automáticas mitigadas en campo</span>
+</div>
+</div>
+<!-- Métrica 3: Incidentes Críticos -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute right-0 top-0 w-24 h-24 bg-error-container/40 rounded-bl-full pointer-events-none transition-transform group-hover:scale-110"></div>
+<div class="flex items-start justify-between mb-space-md">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Resiliencia de Hardware</span>
+<span class="font-headline-sm text-headline-sm text-on-surface mt-1">Incidentes Críticos Resueltos</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-error-container/60 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-telemetry-val-lg text-telemetry-val-lg text-on-surface">24</span>
+<span class="font-label-caps text-label-caps text-error font-semibold">100% Recuperados</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full mt-space-sm overflow-hidden">
+<div class="bg-error h-full rounded-full" style="width: 1.7%;"></div>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs block">24 eventos con recuperación autónoma en nodo</span>
+</div>
+</div>
+</div>
+<!-- CONSOLA DE FILTROS RÁPIDOS Y BÚSQUEDA -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm mb-space-lg flex flex-col gap-space-md">
+<div class="flex flex-col xl:flex-row xl:items-center justify-between gap-space-md">
+<!-- Buscador -->
+<div class="relative flex-1 min-w-[320px]">
+<span class="material-symbols-outlined text-[20px] text-outline absolute left-3 top-2.5">search</span>
+<input class="w-full h-10 pl-10 pr-space-md rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus:outline-none transition-all placeholder:text-outline" placeholder="Buscar por proceso, sensor o mensaje..." type="text"/>
+</div>
+<!-- Selector de Rango de Fecha -->
+<div class="flex items-center gap-space-xs px-space-md h-10 rounded-lg bg-surface-container-low text-on-surface self-start xl:self-auto">
+<span class="material-symbols-outlined text-[18px] text-primary">calendar_today</span>
+<span class="font-label-caps text-label-caps font-semibold">Hoy, 24 Octubre 2024</span>
+<span class="text-outline-variant font-label-caps text-label-caps">|</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">00:00:00 - 23:59:59 UTC-4</span>
+<button class="ml-space-xs text-on-surface-variant hover:text-on-surface" type="button">
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Filtros de Estado con Badge de Conteo -->
+<div class="flex flex-wrap items-center gap-space-xs pt-space-xs">
+<span class="font-label-caps text-label-caps text-on-surface-variant mr-space-xs uppercase tracking-wider">Filtrar por severidad:</span>
+<!-- Todos -->
+<button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-primary text-on-primary shadow-sm" type="button">
+<span class="font-body-sm text-body-sm font-semibold">Todos</span>
+<span class="font-label-caps text-label-caps bg-on-primary/20 px-1.5 py-0.5 rounded">1,420</span>
+</button>
+<!-- OK -->
+<button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface transition-all" type="button">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-body-sm text-body-sm">OK / Informativo</span>
+<span class="font-label-caps text-label-caps bg-secondary-fixed/60 text-on-secondary-fixed px-1.5 py-0.5 rounded font-semibold">1,310</span>
+</button>
+<!-- Advertencia -->
+<button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface transition-all" type="button">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-body-sm text-body-sm">Alerta / Advertencia</span>
+<span class="font-label-caps text-label-caps bg-tertiary-fixed text-on-tertiary-fixed px-1.5 py-0.5 rounded font-semibold">86</span>
+</button>
+<!-- Crítico -->
+<button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface transition-all" type="button">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="font-body-sm text-body-sm">Falla / Crítico</span>
+<span class="font-label-caps text-label-caps bg-error-container text-error px-1.5 py-0.5 rounded font-semibold">24</span>
+</button>
+<div class="ml-auto flex items-center gap-space-xs text-on-surface-variant font-label-caps text-label-caps">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+</span>
+<span>Streaming de eventos en vivo</span>
+</div>
+</div>
+</div>
+<!-- TABLA PRINCIPAL DE BITÁCORA -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-caps text-label-caps uppercase tracking-wider">
+<th class="py-space-md px-space-md">Marca de Tiempo</th>
+<th class="py-space-md px-space-md">Nivel / Estado</th>
+<th class="py-space-md px-space-md">Subsistema / Origen</th>
+<th class="py-space-md px-space-md min-w-[340px]">Mensaje Detallado del Evento</th>
+<th class="py-space-md px-space-md">Acción del Supervisor</th>
+<th class="py-space-md px-space-md text-right">Traza Técnica</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container font-body-md text-body-md text-on-surface">
+<!-- FILA 1: FALLA -->
+<tr class="hover:bg-surface-container-low transition-colors bg-error-container/5">
+<td class="py-space-md px-space-md whitespace-nowrap font-telemetry-val-md text-telemetry-val-md text-on-surface">
+              14:31:02 <span class="text-on-surface-variant font-label-caps text-label-caps">.412</span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-error-container text-error font-label-caps text-label-caps font-semibold">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">error</span>
+                FALLA
+              </span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-caps text-label-caps text-primary font-medium">Supervisor Daemon</span>
+</td>
+<td class="py-space-md px-space-md font-medium text-on-surface">
+              Proceso store reiniciado por el supervisor tras memory leak temporal
+            </td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1 text-secondary font-label-caps text-label-caps font-semibold">
+<span class="material-symbols-outlined text-[16px]">autorenew</span> Autorecuperado
+              </span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap text-right">
+<button class="inline-flex items-center gap-1 px-space-sm py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps transition-all" type="button">
+<span>Ver log raw</span>
+<span class="material-symbols-outlined text-[14px]">code</span>
+</button>
+</td>
+</tr>
+<!-- FILA 2: ALERTA -->
+<tr class="hover:bg-surface-container-low transition-colors bg-tertiary-fixed/10">
+<td class="py-space-md px-space-md whitespace-nowrap font-telemetry-val-md text-telemetry-val-md text-on-surface">
+              14:28:44 <span class="text-on-surface-variant font-label-caps text-label-caps">.108</span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-caps text-label-caps font-semibold">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+                ALERTA
+              </span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-caps text-label-caps text-primary font-medium">Módulo LoRaWAN / 4G</span>
+</td>
+<td class="py-space-md px-space-md text-on-surface">
+              Pérdida temporal de enlace LoRaWAN en gateway norte - Reconectado
+            </td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1 text-secondary font-label-caps text-label-caps font-semibold">
+<span class="material-symbols-outlined text-[16px]">check</span> Reintento exitoso
+              </span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap text-right">
+<button class="inline-flex items-center gap-1 px-space-sm py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps transition-all" type="button">
+<span>Ver log raw</span>
+<span class="material-symbols-outlined text-[14px]">code</span>
+</button>
+</td>
+</tr>
+<!-- FILA 3: FALLA -->
+<tr class="hover:bg-surface-container-low transition-colors bg-error-container/5">
+<td class="py-space-md px-space-md whitespace-nowrap font-telemetry-val-md text-telemetry-val-md text-on-surface">
+              14:15:10 <span class="text-on-surface-variant font-label-caps text-label-caps">.890</span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-error-container text-error font-label-caps text-label-caps font-semibold">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">error</span>
+                FALLA
+              </span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-caps text-label-caps text-primary font-medium">Batería Solar</span>
+</td>
+<td class="py-space-md px-space-md font-medium text-on-surface">
+              Caída de voltaje transitoria en bus I2C - Recuperado
+            </td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1 text-on-surface-variant font-label-caps text-label-caps font-semibold">
+<span class="material-symbols-outlined text-[16px] text-tertiary">send</span> Notificación enviada a WhatsApp
+              </span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap text-right">
+<button class="inline-flex items-center gap-1 px-space-sm py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps transition-all" type="button">
+<span>Ver log raw</span>
+<span class="material-symbols-outlined text-[14px]">code</span>
+</button>
+</td>
+</tr>
+<!-- FILA 4: OK -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-space-md px-space-md whitespace-nowrap font-telemetry-val-md text-telemetry-val-md text-on-surface">
+              14:02:19 <span class="text-on-surface-variant font-label-caps text-label-caps">.004</span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-secondary-fixed/50 text-secondary font-label-caps text-label-caps font-semibold">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                OK
+              </span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-caps text-label-caps text-primary font-medium">Sensor SHT35</span>
+</td>
+<td class="py-space-md px-space-md text-on-surface">
+              Calibración automática de offset de humedad completada
+            </td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="text-on-surface-variant font-label-caps text-label-caps">Sin acción requerida</span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap text-right">
+<button class="inline-flex items-center gap-1 px-space-sm py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps transition-all" type="button">
+<span>Ver log raw</span>
+<span class="material-symbols-outlined text-[14px]">code</span>
+</button>
+</td>
+</tr>
+<!-- FILA 5: ALERTA -->
+<tr class="hover:bg-surface-container-low transition-colors bg-tertiary-fixed/10">
+<td class="py-space-md px-space-md whitespace-nowrap font-telemetry-val-md text-telemetry-val-md text-on-surface">
+              13:54:33 <span class="text-on-surface-variant font-label-caps text-label-caps">.231</span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-caps text-label-caps font-semibold">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+                ALERTA
+              </span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-caps text-label-caps text-primary font-medium">Anemómetro Davis</span>
+</td>
+<td class="py-space-md px-space-md text-on-surface">
+              Lectura de viento superó umbral de ráfaga: <span class="font-telemetry-val-md text-telemetry-val-md text-tertiary font-bold">29.1 km/h</span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1 text-on-surface-variant font-label-caps text-label-caps font-semibold">
+<span class="material-symbols-outlined text-[16px] text-tertiary">send</span> Notificación enviada a WhatsApp
+              </span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap text-right">
+<button class="inline-flex items-center gap-1 px-space-sm py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps transition-all" type="button">
+<span>Ver log raw</span>
+<span class="material-symbols-outlined text-[14px]">code</span>
+</button>
+</td>
+</tr>
+<!-- FILA 6: OK -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-space-md px-space-md whitespace-nowrap font-telemetry-val-md text-telemetry-val-md text-on-surface">
+              13:45:00 <span class="text-on-surface-variant font-label-caps text-label-caps">.001</span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-secondary-fixed/50 text-secondary font-label-caps text-label-caps font-semibold">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                OK
+              </span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-caps text-label-caps text-primary font-medium">Supervisor Daemon</span>
+</td>
+<td class="py-space-md px-space-md text-on-surface">
+              Sincronización horaria NTP ejecutada con éxito (drift: +2ms)
+            </td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="text-on-surface-variant font-label-caps text-label-caps">Sin acción requerida</span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap text-right">
+<button class="inline-flex items-center gap-1 px-space-sm py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps transition-all" type="button">
+<span>Ver log raw</span>
+<span class="material-symbols-outlined text-[14px]">code</span>
+</button>
+</td>
+</tr>
+<!-- FILA 7: OK -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-space-md px-space-md whitespace-nowrap font-telemetry-val-md text-telemetry-val-md text-on-surface">
+              13:30:12 <span class="text-on-surface-variant font-label-caps text-label-caps">.665</span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-secondary-fixed/50 text-secondary font-label-caps text-label-caps font-semibold">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                OK
+              </span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-caps text-label-caps text-primary font-medium">Proceso Store</span>
+</td>
+<td class="py-space-md px-space-md text-on-surface">
+              Persistencia de bloque local completada (64 muestras en SQLite temporal)
+            </td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="text-on-surface-variant font-label-caps text-label-caps">Sin acción requerida</span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap text-right">
+<button class="inline-flex items-center gap-1 px-space-sm py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps transition-all" type="button">
+<span>Ver log raw</span>
+<span class="material-symbols-outlined text-[14px]">code</span>
+</button>
+</td>
+</tr>
+<!-- FILA 8: OK -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-space-md px-space-md whitespace-nowrap font-telemetry-val-md text-telemetry-val-md text-on-surface">
+              13:15:48 <span class="text-on-surface-variant font-label-caps text-label-caps">.112</span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-secondary-fixed/50 text-secondary font-label-caps text-label-caps font-semibold">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                OK
+              </span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-caps text-label-caps text-primary font-medium">Sensor SHT35</span>
+</td>
+<td class="py-space-md px-space-md text-on-surface">
+              Lectura térmica periódica transmitida al concentrador: 24.8 °C
+            </td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="text-on-surface-variant font-label-caps text-label-caps">Sin acción requerida</span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap text-right">
+<button class="inline-flex items-center gap-1 px-space-sm py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps transition-all" type="button">
+<span>Ver log raw</span>
+<span class="material-symbols-outlined text-[14px]">code</span>
+</button>
+</td>
+</tr>
+<!-- FILA 9: ALERTA -->
+<tr class="hover:bg-surface-container-low transition-colors bg-tertiary-fixed/10">
+<td class="py-space-md px-space-md whitespace-nowrap font-telemetry-val-md text-telemetry-val-md text-on-surface">
+              13:02:05 <span class="text-on-surface-variant font-label-caps text-label-caps">.491</span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-caps text-label-caps font-semibold">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+                ALERTA
+              </span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-caps text-label-caps text-primary font-medium">Batería Solar</span>
+</td>
+<td class="py-space-md px-space-md text-on-surface">
+              Disminución de corriente de carga fotovoltaica por cobertura nubosa súbita
+            </td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="text-on-surface-variant font-label-caps text-label-caps">Sin acción requerida</span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap text-right">
+<button class="inline-flex items-center gap-1 px-space-sm py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps transition-all" type="button">
+<span>Ver log raw</span>
+<span class="material-symbols-outlined text-[14px]">code</span>
+</button>
+</td>
+</tr>
+<!-- FILA 10: OK -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-space-md px-space-md whitespace-nowrap font-telemetry-val-md text-telemetry-val-md text-on-surface">
+              12:59:58 <span class="text-on-surface-variant font-label-caps text-label-caps">.902</span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-secondary-fixed/50 text-secondary font-label-caps text-label-caps font-semibold">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                OK
+              </span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-caps text-label-caps text-primary font-medium">Pluviómetro Óptico</span>
+</td>
+<td class="py-space-md px-space-md text-on-surface">
+              Autodiagnóstico del lente emisor infrarrojo: estado limpio (óptico 99%)
+            </td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="text-on-surface-variant font-label-caps text-label-caps">Sin acción requerida</span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap text-right">
+<button class="inline-flex items-center gap-1 px-space-sm py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps transition-all" type="button">
+<span>Ver log raw</span>
+<span class="material-symbols-outlined text-[14px]">code</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- PIE DE TABLA Y PAGINACIÓN DE ESCRITORIO -->
+<div class="p-space-md bg-surface-container-low flex flex-col md:flex-row items-center justify-between gap-space-md">
+<!-- Contador de registros -->
+<div class="flex items-center gap-space-md">
+<span class="font-body-sm text-body-sm text-on-surface-variant">
+          Mostrando <strong class="text-on-surface font-semibold">1 - 10</strong> de <strong class="text-on-surface font-semibold">1,420</strong> eventos registrados hoy
+        </span>
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="font-body-sm text-body-sm">Filas por página:</span>
+<select class="bg-surface-container-lowest text-on-surface font-label-caps text-label-caps rounded px-2 py-1 focus:outline-none">
+<option selected="" value="10">10</option>
+<option value="25">25</option>
+<option value="50">50</option>
+</select>
+</div>
+</div>
+<!-- Navegación por páginas -->
+<div class="flex items-center gap-space-xs">
+<button class="w-8 h-8 rounded-lg flex items-center justify-center bg-surface-container-lowest text-outline-variant opacity-60 cursor-not-allowed" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center bg-primary text-on-primary font-label-caps text-label-caps font-semibold shadow-sm" type="button">
+          1
+        </button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-caps text-label-caps transition-colors" type="button">
+          2
+        </button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-caps text-label-caps transition-colors" type="button">
+          3
+        </button>
+<span class="px-1 text-outline font-label-caps text-label-caps">...</span>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-caps text-label-caps transition-colors" type="button">
+          142
+        </button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-caps text-label-caps transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- PANEL DE INSPECCIÓN RÁPIDA DE TRAZA RAW (MODAL / FLYOUT EXPANDIBLE INLINE) -->
+<div class="mt-space-lg bg-surface-container-lowest rounded-xl p-space-lg shadow-sm">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">code</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Inspección de Carga Útil en Vivo (Último evento)</span>
+<span class="px-2 py-0.5 rounded bg-error-container text-error font-label-caps text-label-caps font-semibold">UUID: 8f4b-2219-c4</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant font-mono">FRAME_HEX: 0x41 0x47 0x52 0x4F</span>
+</div>
+<div class="p-space-md rounded-lg bg-inverse-surface text-inverse-on-surface font-telemetry-val-md text-[13px] leading-relaxed overflow-x-auto">
+<p class="text-outline-variant">// Registro estructurado emitido por el subsistema Supervisor Daemon a las 14:31:02.412 UTC-4</p>
+<p><span class="text-primary-fixed-dim">{"timestamp":</span> <span class="text-secondary-fixed">"2024-10-24T18:31:02.412Z"</span>, <span class="text-primary-fixed-dim">"node_id":</span> <span class="text-tertiary-fixed">"EST-AGRO-NORTE-01"</span>, <span class="text-primary-fixed-dim">"severity":</span> <span class="text-error-container">"CRITICAL_RESOLVED"</span>,</p>
+<p class="pl-4"><span class="text-primary-fixed-dim">"process":</span> <span class="text-secondary-fixed">"store_daemon.bin"</span>, <span class="text-primary-fixed-dim">"exit_code":</span> <span class="text-tertiary-fixed">137</span>, <span class="text-primary-fixed-dim">"action":</span> <span class="text-secondary-fixed">"SIGKILL_RESTART_SUCCESS"</span>,</p>
+<p class="pl-4"><span class="text-primary-fixed-dim">"metrics":</span> { <span class="text-primary-fixed-dim">"ram_allocated_mb":</span> 142.8, <span class="text-primary-fixed-dim">"recovery_time_ms":</span> 380, <span class="text-primary-fixed-dim">"sqlite_integrity":</span> <span class="text-secondary-fixed">"PASSED"</span> },</p>
+<p class="pl-4"><span class="text-primary-fixed-dim">"lora_backlog_flushed":</span> <span class="text-secondary-fixed">true</span>, <span class="text-primary-fixed-dim">"operator_flag":</span> <span class="text-primary-fixed-dim">null</span> }</p>
+</div>
+</div>
+</div></div></main></div></body></html>

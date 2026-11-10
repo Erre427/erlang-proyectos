@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-primary-container":"#fdfcff","background":"#faf8ff","primary-fixed":"#cce5ff","primary":"#006194","surface-container-high":"#e2e7ff","primary-fixed-dim":"#93ccff","inverse-surface":"#283044","on-tertiary-fixed":"#2a1700","surface-container-lowest":"#ffffff","tertiary-fixed":"#ffddb8","surface-container-low":"#f2f3ff","surface-tint":"#006398","on-secondary-fixed":"#002113","primary-container":"#007bb9","secondary":"#006c49","surface-container-highest":"#dae2fd","surface":"#faf8ff","outline":"#707881","error":"#ba1a1a","on-tertiary-fixed-variant":"#653e00","on-secondary":"#ffffff","on-tertiary-container":"#fffbff","on-surface":"#131b2e","on-secondary-container":"#00714d","on-primary-fixed":"#001d31","surface-dim":"#d2d9f4","on-primary":"#ffffff","secondary-fixed":"#6ffbbe","tertiary-container":"#a36700","surface-variant":"#dae2fd","on-primary-fixed-variant":"#004b73","outline-variant":"#bfc7d2","secondary-fixed-dim":"#4edea3","surface-bright":"#faf8ff","on-tertiary":"#ffffff","on-error-container":"#93000a","on-background":"#131b2e","tertiary":"#825100","tertiary-fixed-dim":"#ffb95f","inverse-on-surface":"#eef0ff","inverse-primary":"#93ccff","error-container":"#ffdad6","on-error":"#ffffff","secondary-container":"#6cf8bb","on-surface-variant":"#3f4850","surface-container":"#eaedff","on-secondary-fixed-variant":"#005236"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"space-xl":"2rem","space-xs":"0.25rem","margin":"2rem","space-md":"1rem","margin-mobile":"1rem","gutter":"1.5rem","space-lg":"1.5rem","space-sm":"0.5rem","gutter-sm":"1rem"},fontFamily:{"headline-sm":["Plus Jakarta Sans"],"body-lg":["Inter"],"body-sm":["Inter"],"display-lg-mobile":["Plus Jakarta Sans"],"telemetry-val-lg":["JetBrains Mono"],"display-lg":["Plus Jakarta Sans"],"label-caps":["JetBrains Mono"],"body-md":["Inter"],"telemetry-val-md":["JetBrains Mono"],"headline-lg":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"]},fontSize:{"headline-sm":["16px",{"lineHeight":"24px","letterSpacing":"-0.005em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}],"display-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"700"}],"telemetry-val-lg":["32px",{"lineHeight":"36px","letterSpacing":"-0.03em","fontWeight":"600"}],"display-lg":["36px",{"lineHeight":"44px","letterSpacing":"-0.02em","fontWeight":"700"}],"label-caps":["11px",{"lineHeight":"16px","letterSpacing":"0.06em","fontWeight":"500"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"telemetry-val-md":["20px",{"lineHeight":"24px","letterSpacing":"-0.02em","fontWeight":"500"}],"headline-lg":["24px",{"lineHeight":"32px","letterSpacing":"-0.015em","fontWeight":"600"}],"headline-md":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between"><div class="flex flex-col"><div class="h-16 px-space-md flex items-center gap-space-sm bg-surface-container-lowest"><img alt="Logo Estación Meteorológica" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrCr3ky4hDOIZiakhfmHr3sQOcv_ItCTh4TRRKcnjj1JDYOYY5YgRWikMGGSLFRA2sf7o9QPCQVnRimQkqahundRRBoWqhZ2CmBbfwPYnosG6GmV-8oXFPD37Ik6Z1_1d21kdYHsQ4KsmaDJeY5nBJPnKSQ0ROuXEWDkGQM9TxA_W-ak_l6xAWy04ckUFqnRHmM5ZGdiBmyqn8S6d5YEOE3NpPbV7URmYTc4dF_RgrU_"/><div class="flex flex-col min-w-0"><span class="font-headline-sm text-headline-sm text-on-surface truncate">Estación Agro</span><span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider truncate">Agro-IoT Telemetría</span></div></div><div class="px-space-md py-space-sm"><div class="h-px w-full bg-surface-container-high mb-space-sm"></div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-headline-sm"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span class="font-body-md text-body-md">Dashboard</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg transition-all bg-primary-container text-on-primary-container font-headline-sm" data-path="detalle" href="#"><span class="material-symbols-outlined text-[20px]">thermostat</span><span class="font-body-md text-body-md">Detalle</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="bitacora" href="#"><span class="material-symbols-outlined text-[20px]">history_edu</span><span class="font-body-md text-body-md">Bitácora</span></a></nav></div></div><div class="p-space-md bg-surface-container-low flex flex-col gap-space-sm"><div class="flex items-center justify-between px-space-sm py-space-xs bg-surface-container-lowest rounded-lg"><div class="flex items-center gap-space-xs"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span></span><span class="font-label-caps text-label-caps text-secondary font-semibold">Nodo Central: Activo</span></div><span class="font-label-caps text-label-caps text-on-surface-variant">v2.4.1</span></div><div class="flex items-center gap-space-sm pt-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWXVBLOcXMq4uC4KBwylkDFE8oQNt03WINxqTd90LEAB2W1HMd1iAws4bBj1eTDojGF-cl9uS7g0RLJYZOjY1MsyGQYOkzHA78l1OBXoKWvvVHXDMvrDn7GWyCnmnBzM7NU3vF_o7JMgCPfrrcPzed6rN2tNZyvnxX-c1ngNYvItKD2wTsPYwuMg2Cl4qYEKgWUrflF5FUUrRXFQLkoZFOQ5L59-jZgG-Blg5UosM"/><div class="flex flex-col min-w-0"><span class="font-body-sm text-body-sm font-semibold text-on-surface truncate">Ing. M. Aranda</span><span class="font-label-caps text-label-caps text-on-surface-variant truncate">Técnico de Campo</span></div></div></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-16 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-sm"><span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Red LoRaWAN</span><span class="text-outline-variant font-label-caps text-label-caps">/</span><span class="font-label-caps text-label-caps text-on-surface font-semibold uppercase">Estación Meteorológica Norte</span></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-container text-on-surface-variant"><span class="material-symbols-outlined text-[16px] text-secondary">sync</span><span class="font-label-caps text-label-caps font-medium">Última sync: Hace 3 seg</span></div><div class="flex items-center gap-space-xs"><button class="p-space-xs text-on-surface-variant hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span></button><button class="p-space-xs text-on-surface-variant hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">settings</span></button></div></div></header><main class="w-full pt-16 bg-surface flex-1"><div class="w-full max-w-[1440px] mx-auto p-space-lg"><div class="flex flex-col w-full">
+<!-- Active Route Sync Script for Shell Sidebar -->
+<script>
+    (function() {
+      const links = document.querySelectorAll('aside nav a');
+      links.forEach(link => {
+        if (link.getAttribute('data-path') === 'detalle') {
+          link.className = "flex items-center gap-space-sm px-space-md py-space-sm rounded-lg bg-primary-container text-on-primary-container font-headline-sm transition-all shadow-sm";
+        } else {
+          link.className = "flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all";
+        }
+      });
+    })();
+  </script>
+<!-- 1. Encabezado de la vista & Context Bar -->
+<div class="flex flex-col gap-space-md mb-space-lg">
+<!-- Breadcrumb & Status Tracker -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<nav class="flex items-center gap-space-xs font-label-caps text-label-caps">
+<span class="text-on-surface-variant">Estación Meteorológica</span>
+<span class="text-outline-variant">/</span>
+<span class="text-on-surface-variant">Telemetría</span>
+<span class="text-outline-variant">/</span>
+<span class="text-primary font-semibold">Temperatura</span>
+</nav>
+<div class="flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">
+<span class="inline-block w-2 h-2 rounded-full bg-secondary"></span>
+<span>Sensor Transmitiendo en Frecuencia 915 MHz (SF7)</span>
+</div>
+</div>
+<!-- Title and Action Command Bar -->
+<div class="flex flex-col xl:flex-row xl:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]">thermostat</span>
+</div>
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Análisis Detallado de Variable: Temperatura Ambiental (°C)</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Monitoreo micropabellón en dosel vegetal con sensor de referencia grado metrológico</p>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<button class="flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container-low shadow-sm transition-all font-body-md text-body-md font-medium" type="button">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">download</span>
+<span>Descargar Datos (.CSV / .XLSX)</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container-low shadow-sm transition-all font-body-md text-body-md font-medium" type="button">
+<span class="material-symbols-outlined text-[18px] text-tertiary">tune</span>
+<span>Calibrar Sensor</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-primary text-on-primary hover:bg-primary-container shadow-sm transition-all font-body-md text-body-md font-semibold" type="button">
+<span class="material-symbols-outlined text-[18px]">notifications_active</span>
+<span>Configurar Alertas</span>
+</button>
+</div>
+</div>
+<!-- Filter & Station Sub-bar -->
+<div class="flex flex-wrap items-center justify-between gap-space-md bg-surface-container-lowest p-space-sm rounded-xl shadow-sm">
+<div class="flex flex-wrap items-center gap-space-md">
+<!-- Sensor Selector -->
+<div class="flex items-center gap-space-xs">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Nodo:</span>
+<div class="relative">
+<button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-surface-container-low text-on-surface font-headline-sm text-headline-sm hover:bg-surface-container transition-colors" type="button">
+<span class="inline-block w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-caps text-label-caps font-semibold text-primary">SHT35-SN8492</span>
+<span>Sensor Principal: SHT35 - Sonda Canopia Norte</span>
+<span class="material-symbols-outlined text-[18px] text-outline">expand_more</span>
+</button>
+</div>
+</div>
+<div class="h-6 w-px bg-surface-container-high hidden md:block"></div>
+<!-- Metric Aux Tags -->
+<div class="flex items-center gap-space-xs">
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">Latitud: -33.4568°</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">Elevación: 524 msnm</span>
+</div>
+</div>
+<!-- Time Interval Pill Tabs -->
+<div class="flex items-center p-1 rounded-lg bg-surface-container-low gap-1">
+<button class="px-space-md py-1 rounded-md text-on-surface-variant hover:text-on-surface font-body-sm text-body-sm transition-all" type="button">Tiempo Real</button>
+<button class="px-space-md py-1 rounded-md bg-primary-container text-on-primary-container font-body-sm text-body-sm font-semibold shadow-sm transition-all" type="button">1 Hora</button>
+<button class="px-space-md py-1 rounded-md text-on-surface-variant hover:text-on-surface font-body-sm text-body-sm transition-all" type="button">24 Horas</button>
+<button class="px-space-md py-1 rounded-md text-on-surface-variant hover:text-on-surface font-body-sm text-body-sm transition-all" type="button">7 Días</button>
+</div>
+</div>
+</div>
+<!-- 2. Fila superior de KPIs y métricas clave (Grid 4 columnas) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md mb-space-lg">
+<!-- Card 1: Promedio 1 minuto -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm relative overflow-hidden flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Promedio 1 minuto</span>
+<span class="flex items-center gap-1 px-space-xs py-0.5 rounded-full bg-secondary/10 text-secondary font-label-caps text-label-caps font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+          ÓPTIMO
+        </span>
+</div>
+<div class="flex items-baseline gap-space-xs mb-space-xs">
+<span class="font-telemetry-val-lg text-telemetry-val-lg text-on-surface font-semibold tracking-tight">24.6</span>
+<span class="text-on-surface-variant font-label-caps text-label-caps uppercase font-bold">°C</span>
+</div>
+<div class="flex flex-col gap-1">
+<p class="font-body-sm text-body-sm text-on-surface-variant">Lectura instantánea de alta precisión ±0.1°C</p>
+<div class="flex items-center gap-space-xs text-secondary font-body-sm text-body-sm font-medium mt-1">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>Sonda calibrada e higrómetro pareado</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 h-1 bg-secondary rounded-b-xl"></div>
+</div>
+<!-- Card 2: Promedio 1 hora -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm relative overflow-hidden flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Promedio 1 hora</span>
+<span class="flex items-center gap-1 px-space-xs py-0.5 rounded-full bg-primary/10 text-primary font-label-caps text-label-caps font-semibold">
+<span class="material-symbols-outlined text-[12px]">trending_up</span>
+          HISTÓRICO
+        </span>
+</div>
+<div class="flex items-baseline gap-space-xs mb-space-xs">
+<span class="font-telemetry-val-lg text-telemetry-val-lg text-on-surface font-semibold tracking-tight">23.8</span>
+<span class="text-on-surface-variant font-label-caps text-label-caps uppercase font-bold">°C</span>
+</div>
+<div class="flex flex-col gap-1">
+<p class="font-body-sm text-body-sm text-on-surface-variant">Base de cálculo: 60 lecturas válidas</p>
+<div class="flex items-center gap-space-xs text-primary font-body-sm text-body-sm font-medium mt-1">
+<span class="material-symbols-outlined text-[16px]">north_east</span>
+<span>+0.8 °C vs promedio 24h</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 h-1 bg-primary rounded-b-xl"></div>
+</div>
+<!-- Card 3: Mínimo registrado -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm relative overflow-hidden flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Mínimo registrado</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps font-medium">HOY</span>
+</div>
+<div class="flex items-baseline gap-space-xs mb-space-xs">
+<span class="font-telemetry-val-lg text-telemetry-val-lg text-on-surface font-semibold tracking-tight">16.4</span>
+<span class="text-on-surface-variant font-label-caps text-label-caps uppercase font-bold">°C</span>
+</div>
+<div class="flex flex-col gap-1">
+<p class="font-body-sm text-body-sm text-on-surface-variant">Registrado hoy a las 05:42 AM</p>
+<div class="inline-flex items-center gap-space-xs text-secondary font-label-caps text-label-caps font-semibold mt-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>Dentro de rango seguro</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 h-1 bg-surface-container-highest rounded-b-xl"></div>
+</div>
+<!-- Card 4: Máximo registrado -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm relative overflow-hidden flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Máximo registrado</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps font-medium">AYER</span>
+</div>
+<div class="flex items-baseline gap-space-xs mb-space-xs">
+<span class="font-telemetry-val-lg text-telemetry-val-lg text-on-surface font-semibold tracking-tight">28.9</span>
+<span class="text-on-surface-variant font-label-caps text-label-caps uppercase font-bold">°C</span>
+</div>
+<div class="flex flex-col gap-1">
+<p class="font-body-sm text-body-sm text-on-surface-variant">Registrado ayer a las 14:15 PM</p>
+<div class="inline-flex items-center gap-space-xs text-tertiary font-label-caps text-label-caps font-semibold mt-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span>Umbral alerta: 32.0 °C</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 h-1 bg-tertiary rounded-b-xl"></div>
+</div>
+</div>
+<!-- 3. Gráfica de línea grande (Componente Hero Central) -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm mb-space-lg flex flex-col gap-space-md">
+<!-- Header with controls and toggles -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md pb-space-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<h2 class="font-headline-md text-headline-md text-on-surface">Evolución Térmica Continua e Histograma</h2>
+<span class="px-2 py-0.5 rounded text-xs font-label-caps bg-surface-container text-on-surface-variant">Resolución: 10s</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Serie temporal con demarcación bioclimática para viñedos y frutales</p>
+</div>
+<!-- Controls: Plot Type Toggle and Interactive Zoom -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<div class="flex items-center p-1 rounded-lg bg-surface-container-low">
+<button class="px-space-sm py-1 rounded-md bg-surface-container-lowest text-on-surface shadow-xs font-label-caps text-label-caps font-semibold" type="button">Línea Suave</button>
+<button class="px-space-sm py-1 rounded-md text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps" type="button">Puntos de Muestreo</button>
+<button class="px-space-sm py-1 rounded-md text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps" type="button">Banda Min/Max</button>
+</div>
+<div class="flex items-center gap-1 bg-surface-container-low p-1 rounded-lg">
+<button class="w-7 h-7 flex items-center justify-center rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" title="Zoom in" type="button">
+<span class="material-symbols-outlined text-[18px]">zoom_in</span>
+</button>
+<button class="w-7 h-7 flex items-center justify-center rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" title="Zoom out" type="button">
+<span class="material-symbols-outlined text-[18px]">zoom_out</span>
+</button>
+<button class="w-7 h-7 flex items-center justify-center rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" title="Restaurar zoom" type="button">
+<span class="material-symbols-outlined text-[18px]">restart_alt</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Threshold Legend -->
+<div class="flex flex-wrap items-center gap-space-md text-body-sm font-body-sm bg-surface-container-low px-space-md py-space-xs rounded-lg">
+<div class="flex items-center gap-2">
+<span class="w-3 h-0.5 bg-error inline-block"></span>
+<span class="font-label-caps text-label-caps text-error font-medium">Umbral Crítico Superior (32.0°C)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-xs bg-secondary/20 inline-block"></span>
+<span class="font-label-caps text-label-caps text-secondary font-medium">Rango Óptimo de Cultivo (18.0°C - 28.0°C)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-0.5 bg-tertiary inline-block"></span>
+<span class="font-label-caps text-label-caps text-tertiary font-medium">Umbral Alerta Helada (&lt; 2.0°C)</span>
+</div>
+<div class="ml-auto flex items-center gap-2">
+<span class="w-3 h-0.5 bg-primary-container inline-block"></span>
+<span class="font-label-caps text-label-caps text-on-surface font-semibold">Temperatura Registrada</span>
+</div>
+</div>
+<!-- Main High-Definition SVG Vector Chart -->
+<div class="relative w-full h-[380px] select-none">
+<svg class="w-full h-full" fill="none" preserveaspectratio="none" viewbox="0 0 1000 360">
+<defs>
+<!-- Gradient fill under thermal curve -->
+<lineargradient id="tempGradientArea" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#007bb9" stop-opacity="0.30"></stop>
+<stop offset="50%" stop-color="#006c49" stop-opacity="0.12"></stop>
+<stop offset="100%" stop-color="#006c49" stop-opacity="0.0"></stop>
+</lineargradient>
+<!-- Gradient for the main curve stroke -->
+<lineargradient id="tempLineStroke" x1="0" x2="1" y1="0" y2="0">
+<stop offset="0%" stop-color="#006194"></stop>
+<stop offset="45%" stop-color="#007bb9"></stop>
+<stop offset="80%" stop-color="#006c49"></stop>
+<stop offset="100%" stop-color="#4edea3"></stop>
+</lineargradient>
+<!-- Optimal crop zone pattern -->
+<lineargradient id="optimalZoneFill" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#6cf8bb" stop-opacity="0.18"></stop>
+<stop offset="100%" stop-color="#6cf8bb" stop-opacity="0.08"></stop>
+</lineargradient>
+</defs>
+<!-- Y Axis Scale Horizontal Grid Lines -->
+<!-- 35°C (y = 20) -->
+<line stroke="#dae2fd" stroke-dasharray="3 3" stroke-width="1" x1="60" x2="980" y1="20" y2="20"></line>
+<text class="text-[10px] font-mono" fill="#707881" text-anchor="end" x="48" y="24">35°C</text>
+<!-- 32°C Critical Upper Threshold (y = 56) -->
+<line stroke="#ba1a1a" stroke-dasharray="4 4" stroke-width="1.5" x1="60" x2="980" y1="56" y2="56"></line>
+<text class="text-[10px] font-mono font-bold" fill="#ba1a1a" text-anchor="end" x="48" y="60">32°C</text>
+<rect fill="#ffdad6" height="18" rx="4" width="100" x="880" y="46"></rect>
+<text class="text-[9px] font-mono font-bold" fill="#93000a" text-anchor="middle" x="930" y="58">LÍMITE CRÍTICO</text>
+<!-- 28°C Upper Optimal (y = 104) -->
+<line stroke="#dae2fd" stroke-dasharray="3 3" stroke-width="1" x1="60" x2="980" y1="104" y2="104"></line>
+<text class="text-[10px] font-mono" fill="#707881" text-anchor="end" x="48" y="108">28°C</text>
+<!-- Optimal Vegetative Growth Zone Rectangle (18°C = y:224 down to 28°C = y:104) -->
+<rect fill="url(#optimalZoneFill)" height="120" width="920" x="60" y="104"></rect>
+<text class="text-[9px] font-mono" fill="#006c49" text-anchor="end" x="970" y="118">ZONA VEGETATIVA ÓPTIMA</text>
+<!-- 25°C Mid Grid (y = 140) -->
+<line stroke="#dae2fd" stroke-dasharray="3 3" stroke-width="1" x1="60" x2="980" y1="140" y2="140"></line>
+<text class="text-[10px] font-mono" fill="#707881" text-anchor="end" x="48" y="144">25°C</text>
+<!-- 20°C Mid Grid (y = 200) -->
+<line stroke="#dae2fd" stroke-dasharray="3 3" stroke-width="1" x1="60" x2="980" y1="200" y2="200"></line>
+<text class="text-[10px] font-mono" fill="#707881" text-anchor="end" x="48" y="204">20°C</text>
+<!-- 18°C Lower Optimal (y = 224) -->
+<line stroke="#006c49" stroke-dasharray="2 2" stroke-opacity="0.5" stroke-width="1" x1="60" x2="980" y1="224" y2="224"></line>
+<text class="text-[10px] font-mono" fill="#006c49" text-anchor="end" x="48" y="228">18°C</text>
+<!-- 15°C (y = 260) -->
+<line stroke="#dae2fd" stroke-dasharray="3 3" stroke-width="1" x1="60" x2="980" y1="260" y2="260"></line>
+<text class="text-[10px] font-mono" fill="#707881" text-anchor="end" x="48" y="264">15°C</text>
+<!-- 10°C Base Axis (y = 310) -->
+<line stroke="#dae2fd" stroke-width="1" x1="60" x2="980" y1="310" y2="310"></line>
+<text class="text-[10px] font-mono" fill="#707881" text-anchor="end" x="48" y="314">10°C</text>
+<!-- X Axis Vertical Ticks (30 min increments from 08:00 to 14:30) -->
+<!-- 08:00 (x=70) -->
+<line stroke="#707881" stroke-width="1" x1="70" x2="70" y1="310" y2="316"></line>
+<text class="text-[10px] font-mono" fill="#707881" text-anchor="middle" x="70" y="332">08:00</text>
+<!-- 08:30 (x=135) -->
+<line stroke="#bfc7d2" stroke-width="1" x1="135" x2="135" y1="310" y2="314"></line>
+<text class="text-[10px] font-mono" fill="#707881" text-anchor="middle" x="135" y="332">08:30</text>
+<!-- 09:00 (x=200) -->
+<line stroke="#707881" stroke-width="1" x1="200" x2="200" y1="310" y2="316"></line>
+<text class="text-[10px] font-mono" fill="#707881" text-anchor="middle" x="200" y="332">09:00</text>
+<!-- 09:30 (x=265) -->
+<line stroke="#bfc7d2" stroke-width="1" x1="265" x2="265" y1="310" y2="314"></line>
+<text class="text-[10px] font-mono" fill="#707881" text-anchor="middle" x="265" y="332">09:30</text>
+<!-- 10:00 (x=330) -->
+<line stroke="#707881" stroke-width="1" x1="330" x2="330" y1="310" y2="316"></line>
+<text class="text-[10px] font-mono" fill="#707881" text-anchor="middle" x="330" y="332">10:00</text>
+<!-- 10:30 (x=395) -->
+<line stroke="#bfc7d2" stroke-width="1" x1="395" x2="395" y1="310" y2="314"></line>
+<text class="text-[10px] font-mono" fill="#707881" text-anchor="middle" x="395" y="332">10:30</text>
+<!-- 11:00 (x=460) -->
+<line stroke="#707881" stroke-width="1" x1="460" x2="460" y1="310" y2="316"></line>
+<text class="text-[10px] font-mono" fill="#707881" text-anchor="middle" x="460" y="332">11:00</text>
+<!-- 11:30 (x=525) -->
+<line stroke="#bfc7d2" stroke-width="1" x1="525" x2="525" y1="310" y2="314"></line>
+<text class="text-[10px] font-mono" fill="#707881" text-anchor="middle" x="525" y="332">11:30</text>
+<!-- 12:00 (x=590) -->
+<line stroke="#707881" stroke-width="1" x1="590" x2="590" y1="310" y2="316"></line>
+<text class="text-[10px] font-mono" fill="#707881" text-anchor="middle" x="590" y="332">12:00</text>
+<!-- 12:30 (x=655) -->
+<line stroke="#bfc7d2" stroke-width="1" x1="655" x2="655" y1="310" y2="314"></line>
+<text class="text-[10px] font-mono" fill="#707881" text-anchor="middle" x="655" y="332">12:30</text>
+<!-- 13:00 (x=720) -->
+<line stroke="#707881" stroke-width="1" x1="720" x2="720" y1="310" y2="316"></line>
+<text class="text-[10px] font-mono" fill="#707881" text-anchor="middle" x="720" y="332">13:00</text>
+<!-- 13:30 (x=785) Inspection Active Point -->
+<line stroke="#707881" stroke-width="1" x1="785" x2="785" y1="310" y2="316"></line>
+<text class="text-[10px] font-mono font-bold" fill="#006194" text-anchor="middle" x="785" y="332">13:30</text>
+<!-- 14:00 (x=850) -->
+<line stroke="#707881" stroke-width="1" x1="850" x2="850" y1="310" y2="316"></line>
+<text class="text-[10px] font-mono" fill="#707881" text-anchor="middle" x="850" y="332">14:00</text>
+<!-- 14:30 (x=915) -->
+<line stroke="#707881" stroke-width="1" x1="915" x2="915" y1="310" y2="316"></line>
+<text class="text-[10px] font-mono" fill="#707881" text-anchor="middle" x="915" y="332">14:30</text>
+<!-- Continuous Spline Path: Data from 08:00 to 14:30 -->
+<!-- Area path -->
+<path d="M 70 248 C 110 242, 160 230, 200 220 C 240 210, 300 195, 330 185 C 380 170, 420 162, 460 156 C 500 150, 550 146, 590 148 C 630 150, 680 144, 720 143 C 750 142, 770 142.4, 785 142.4 C 815 143, 850 146, 880 145 C 900 144.5, 930 144.2, 940 144 L 940 310 L 70 310 Z" fill="url(#tempGradientArea)"></path>
+<!-- Main Stroke path -->
+<path d="M 70 248 C 110 242, 160 230, 200 220 C 240 210, 300 195, 330 185 C 380 170, 420 162, 460 156 C 500 150, 550 146, 590 148 C 630 150, 680 144, 720 143 C 750 142, 770 142.4, 785 142.4 C 815 143, 850 146, 880 145 C 900 144.5, 930 144.2, 940 144" fill="none" stroke="url(#tempLineStroke)" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+<!-- Sampling markers on path -->
+<circle cx="70" cy="248" fill="#ffffff" r="3" stroke="#006194" stroke-width="2"></circle>
+<circle cx="200" cy="220" fill="#ffffff" r="3" stroke="#006194" stroke-width="2"></circle>
+<circle cx="330" cy="185" fill="#ffffff" r="3" stroke="#007bb9" stroke-width="2"></circle>
+<circle cx="460" cy="156" fill="#ffffff" r="3" stroke="#007bb9" stroke-width="2"></circle>
+<circle cx="590" cy="148" fill="#ffffff" r="3" stroke="#006c49" stroke-width="2"></circle>
+<circle cx="720" cy="143" fill="#ffffff" r="3" stroke="#006c49" stroke-width="2"></circle>
+<circle cx="850" cy="146" fill="#ffffff" r="3" stroke="#006c49" stroke-width="2"></circle>
+<!-- Active Inspection Cursor (Vertical rule at x = 785, 13:30) -->
+<line stroke="#006194" stroke-dasharray="4 3" stroke-width="1.5" x1="785" x2="785" y1="30" y2="310"></line>
+<!-- Active Focal Point Circle -->
+<circle cx="785" cy="142.4" fill="#006194" fill-opacity="0.2" r="7"></circle>
+<circle cx="785" cy="142.4" fill="#ffffff" r="4.5" stroke="#006194" stroke-width="2.5"></circle>
+</svg>
+<!-- Floating Inspection Tooltip Popover (Precise placement at 13:30) -->
+<div class="absolute left-[70%] top-[40px] transform -translate-x-1/2 bg-inverse-surface text-inverse-on-surface p-space-sm rounded-lg shadow-xl pointer-events-none z-30 flex flex-col gap-1 min-w-[270px] backdrop-blur-md">
+<div class="flex items-center justify-between border-b border-white/10 pb-1 mb-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary-fixed">schedule</span>
+<span class="font-label-caps text-label-caps text-surface-dim font-bold">13:30 hrs - Registro SHT35</span>
+</div>
+<span class="w-2 h-2 rounded-full bg-secondary-fixed animate-ping"></span>
+</div>
+<div class="flex items-baseline justify-between">
+<span class="font-body-sm text-body-sm text-surface-dim">Temperatura:</span>
+<span class="font-telemetry-val-md text-telemetry-val-md font-bold text-white tracking-tight">24.8 °C</span>
+</div>
+<div class="flex items-center justify-between text-body-sm text-surface-dim">
+<span>Desv. Estándar:</span>
+<span class="font-label-caps text-label-caps font-semibold text-secondary-fixed">±0.12 °C</span>
+</div>
+<div class="flex items-center justify-between text-body-sm text-surface-dim">
+<span>Calidad señal (SNR):</span>
+<span class="font-label-caps text-label-caps font-semibold text-white">99.8% (-74 dBm)</span>
+</div>
+</div>
+</div>
+<!-- Chart Bottom Status Strip -->
+<div class="flex flex-wrap items-center justify-between text-body-sm text-on-surface-variant pt-space-xs border-t border-surface-container-high">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-caps text-label-caps uppercase text-outline">Intervalo de captura: 10 segundos</span>
+<span>•</span>
+<span class="font-label-caps text-label-caps text-secondary font-medium">100% de tramas recibidas sin interpolación</span>
+</div>
+<div class="flex items-center gap-space-sm font-label-caps text-label-caps">
+<span>Filtro FIR aplicado: Ventana móvil 3 puntos</span>
+</div>
+</div>
+</div>
+<!-- 4. Desglose analítico complementario inferior (2 Columnas Desktop) -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg">
+<!-- Columna Izquierda: Distribución por Cuartiles y Horas de Calor -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">equalizer</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Distribución por Cuartiles y Horas de Calor</h3>
+</div>
+<span class="font-label-caps text-label-caps px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant">Ciclo Activo 2024/25</span>
+</div>
+<!-- Core Agroclimatology Metric Badges -->
+<div class="grid grid-cols-3 gap-space-sm mb-space-md">
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Horas Frío Acum.</span>
+<span class="font-telemetry-val-md text-telemetry-val-md text-primary font-bold mt-1">420 <span class="text-xs font-normal">hrs</span></span>
+<span class="text-[11px] text-on-surface-variant mt-0.5">Meta cultivo: 500 hrs</span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Grados Día (GDD)</span>
+<span class="font-telemetry-val-md text-telemetry-val-md text-secondary font-bold mt-1">14.5 <span class="text-xs font-normal">GDD</span></span>
+<span class="text-[11px] text-on-surface-variant mt-0.5">Base 10°C (Hoy)</span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Gradiente Vertical</span>
+<span class="font-telemetry-val-md text-telemetry-val-md text-on-surface font-bold mt-1">0.4 <span class="text-xs font-normal">°C/m</span></span>
+<span class="text-[11px] text-secondary mt-0.5">Inversión neutra</span>
+</div>
+</div>
+<!-- Visual Distribution by Quartiles -->
+<div class="flex flex-col gap-space-xs mb-space-sm">
+<div class="flex justify-between items-center text-body-sm font-body-sm text-on-surface-variant">
+<span>Tiempo en Rango Biológico (Últimas 24h)</span>
+<span class="font-label-caps text-label-caps font-semibold text-on-surface">Total: 24 horas</span>
+</div>
+<!-- Multi-segment Progress Bar -->
+<div class="w-full h-3 rounded-full bg-surface-container flex overflow-hidden">
+<div class="h-full bg-tertiary-fixed-dim" style="width: 12%" title="Frío (&lt;15°C): 12%"></div>
+<div class="h-full bg-secondary" style="width: 72%" title="Óptimo (18-28°C): 72%"></div>
+<div class="h-full bg-primary-container" style="width: 16%" title="Cálido (&gt;28°C): 16%"></div>
+</div>
+<div class="flex items-center justify-between text-label-caps font-label-caps text-on-surface-variant pt-1">
+<div class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim inline-block"></span>
+<span>&lt; 15°C (2.8 h)</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary inline-block"></span>
+<span class="text-secondary font-bold">18°C a 28°C (17.3 h)</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary-container inline-block"></span>
+<span>&gt; 28°C (3.9 h)</span>
+</div>
+</div>
+</div>
+<!-- Agro Summary Note -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-start gap-space-sm mt-space-xs">
+<span class="material-symbols-outlined text-[20px] text-secondary mt-0.5">eco</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Condiciones fotosintéticas favorables</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">La planta se mantiene en rango de intercambio gaseoso eficiente con baja evapotranspiración de estrés.</p>
+</div>
+</div>
+</div>
+<!-- Columna Derecha: Estado del Hardware y Diagnóstico del Sensor -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">memory</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Estado del Hardware y Diagnóstico del Sensor</h3>
+</div>
+<span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded-full bg-secondary/10 text-secondary font-label-caps text-label-caps font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+          OPERATIVO
+        </span>
+</div>
+<!-- Hardware Spec Metrics Grid -->
+<div class="grid grid-cols-2 gap-space-md mb-space-md">
+<!-- Sensor Model Item -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col justify-between">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Modelo Transductor</span>
+<span class="material-symbols-outlined text-[16px] text-outline">verified</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface">Sensirion SHT35</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-0.5">I2C Dirección 0x44 (Bus A)</span>
+</div>
+<!-- Cell Voltage Item -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col justify-between">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Voltaje de Celda</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-mono bg-secondary/15 text-secondary font-bold">NORMAL</span>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="font-telemetry-val-md text-telemetry-val-md text-on-surface font-semibold">3.28</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">V DC</span>
+</div>
+<span class="font-label-caps text-label-caps text-secondary font-medium mt-0.5">Batería LiFePO4: 94% Carga</span>
+</div>
+<!-- Calibration Validity -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col justify-between">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Calibración Vigente</span>
+<span class="material-symbols-outlined text-[16px] text-secondary">event_available</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface">Hasta Octubre 2025</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-0.5">Certificado INTI #AR-88219</span>
+</div>
+<!-- Packet Loss -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col justify-between">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Paquetes Perdidos</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-mono bg-secondary/15 text-secondary font-bold">EXCELENTE</span>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="font-telemetry-val-md text-telemetry-val-md text-secondary font-semibold">0.01</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">%</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-0.5">1 fallo en 8,640 tramas</span>
+</div>
+</div>
+<!-- Quick Maintenance / Ping Action Bar -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-outline">shield</span>
+<span class="font-body-sm text-body-sm text-on-surface">Prueba de Autodiagnóstico del Sensor</span>
+</div>
+<button class="px-space-md py-1 rounded bg-surface-container-lowest hover:bg-surface-container text-primary font-body-sm text-body-sm font-semibold transition-colors shadow-xs" type="button">
+          Ejecutar Test
+        </button>
+</div>
+</div>
+</div>
+</div></div></main></div></body></html>
