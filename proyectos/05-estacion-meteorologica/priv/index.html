@@ -1,33 +1,271 @@
-<!doctype html>
-<html lang="es">
-<head>
-<meta charset="utf-8">
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Estación Meteorológica</title>
-<style>
-  body{font-family:sans-serif;max-width:700px;margin:2rem auto;padding:0 1rem}
-  table{border-collapse:collapse;width:100%}
-  td,th{border:1px solid #ccc;padding:.5rem;text-align:center}
-  th{background:#eef}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{
+"primary":"#006194","primary-container":"#007bb9","on-primary":"#ffffff","primary-fixed":"#cce5ff",
+"secondary":"#006c49","secondary-fixed":"#6ffbbe","on-secondary-fixed":"#002113",
+"tertiary":"#825100","tertiary-fixed":"#ffddb8","on-tertiary-fixed":"#2a1700",
+"error":"#ba1a1a","error-container":"#ffdad6","surface":"#faf8ff","surface-container-lowest":"#ffffff",
+"surface-container-low":"#f2f3ff","surface-container":"#eaedff","surface-container-high":"#e2e7ff",
+"on-surface":"#131b2e","on-surface-variant":"#3f4850","outline":"#707881","outline-variant":"#bfc7d2","inverse-surface":"#283044"},
+fontFamily:{sans:["Inter"],head:["Plus Jakarta Sans"],mono:["JetBrains Mono"]}}}}</script>
+<style>::-webkit-scrollbar{display:none}.material-symbols-outlined{font-size:20px}</style>
 </head>
-<body>
-<h1>Estación Meteorológica</h1>
-<table>
-  <thead><tr><th>Variable</th><th>Promedio 1 min</th><th>Promedio 1 h</th></tr></thead>
-  <tbody id="tabla"></tbody>
-</table>
+<body class="bg-surface font-sans text-on-surface antialiased">
+
+<!-- BARRA LATERAL -->
+<aside class="fixed left-0 top-0 h-screen w-64 bg-surface-container-lowest shadow z-50 flex flex-col justify-between">
+  <div>
+    <div class="h-16 px-4 flex items-center gap-2">
+      <span class="material-symbols-outlined text-primary" style="font-size:32px">partly_cloudy_day</span>
+      <div class="flex flex-col"><span class="font-head font-semibold">Estación Agro</span>
+      <span class="font-mono text-[11px] uppercase tracking-wider text-on-surface-variant">Agro-IoT Telemetría</span></div>
+    </div>
+    <nav class="px-4 py-2 flex flex-col gap-1 border-t border-surface-container-high mt-2 pt-4">
+      <button data-view="dashboard" onclick="setView('dashboard')" class="nav flex items-center gap-2 px-4 py-2 rounded-lg text-left"><span class="material-symbols-outlined">grid_view</span>Dashboard</button>
+      <button data-view="detalle" onclick="setView('detalle')" class="nav flex items-center gap-2 px-4 py-2 rounded-lg text-left"><span class="material-symbols-outlined">thermostat</span>Detalle</button>
+      <button data-view="bitacora" onclick="setView('bitacora')" class="nav flex items-center gap-2 px-4 py-2 rounded-lg text-left"><span class="material-symbols-outlined">history_edu</span>Bitácora</button>
+    </nav>
+  </div>
+  <div class="p-4 bg-surface-container-low">
+    <div class="flex items-center gap-2 px-2 py-1 bg-surface-container-lowest rounded-lg">
+      <span id="dot" class="w-2 h-2 rounded-full bg-outline"></span>
+      <span id="nodo" class="font-mono text-[11px] font-semibold">Conectando…</span>
+    </div>
+  </div>
+</aside>
+
+<div class="pl-64 min-h-screen">
+  <header class="fixed top-0 left-64 right-0 h-16 bg-surface/80 backdrop-blur-xl shadow z-40 flex items-center justify-between px-6">
+    <span class="font-mono text-[11px] uppercase text-on-surface-variant">Estación Meteorológica <span class="text-outline-variant">/</span> <b id="crumb" class="text-on-surface">Dashboard</b></span>
+    <span class="flex items-center gap-1 px-3 py-1 rounded-full bg-surface-container font-mono text-[11px]">
+      <span class="material-symbols-outlined text-secondary" style="font-size:16px">sync</span><span id="sync">Última sync: —</span></span>
+  </header>
+
+  <main class="pt-16"><div class="max-w-[1440px] mx-auto p-6">
+
+  <!-- ============ DASHBOARD ============ -->
+  <section id="v-dashboard" class="flex flex-col gap-6">
+    <div class="flex flex-col gap-2">
+      <div class="flex items-center gap-3 flex-wrap">
+        <span id="pill" class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-high font-mono text-[11px] font-semibold">CONECTANDO…</span>
+        <span class="text-sm text-on-surface-variant">Total lecturas: <b id="total" class="font-mono text-on-surface">—</b></span>
+        <span class="text-sm text-on-surface-variant">Última actualización: <b id="ultima" class="text-on-surface">—</b></span>
+      </div>
+      <h1 class="font-head text-2xl font-semibold">Estación Meteorológica en tiempo real</h1>
+    </div>
+
+    <div id="cards" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6"></div>
+
+    <div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm">
+      <div class="flex flex-wrap items-center justify-between gap-3 pb-4">
+        <div><h2 class="font-head text-xl font-semibold">Tendencia reciente</h2>
+        <p class="text-xs text-on-surface-variant">Promedio de 1 minuto, una muestra cada 3 s (mientras la página está abierta)</p></div>
+        <div id="tabsDash" class="flex p-1 bg-surface-container-low rounded-lg"></div>
+      </div>
+      <div id="chartDash" class="relative w-full h-72"></div>
+    </div>
+
+    <div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm">
+      <div class="flex items-center justify-between pb-3">
+        <h3 class="font-head font-semibold">Bitácora de eventos recientes</h3>
+        <button onclick="setView('bitacora')" class="text-primary text-sm font-semibold">Registro completo →</button>
+      </div>
+      <div id="recent" class="flex flex-col gap-2"></div>
+    </div>
+  </section>
+
+  <!-- ============ DETALLE ============ -->
+  <section id="v-detalle" class="hidden flex flex-col gap-6">
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <div><h1 id="detTitle" class="font-head text-2xl font-semibold">Análisis detallado</h1>
+      <p class="text-sm text-on-surface-variant">Promedios reales del agregador y estadísticas de la sesión actual</p></div>
+      <label class="flex items-center gap-2 text-sm">Variable:
+        <select id="detSel" onchange="detVar=this.value;render()" class="bg-surface-container-lowest rounded-lg px-3 py-2 shadow-sm font-semibold"></select></label>
+    </div>
+    <div id="detCards" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6"></div>
+    <div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm">
+      <h2 class="font-head text-xl font-semibold pb-4">Evolución (promedio 1 min)</h2>
+      <div id="chartDet" class="relative w-full h-80"></div>
+    </div>
+  </section>
+
+  <!-- ============ BITÁCORA ============ -->
+  <section id="v-bitacora" class="hidden flex flex-col gap-6">
+    <div><h1 class="font-head text-2xl font-semibold">Bitácora del sistema</h1>
+    <p class="text-sm text-on-surface-variant">Eventos detectados por la interfaz: caídas de la API, reinicios del supervisor y alertas por umbral</p></div>
+    <div class="flex flex-wrap items-center gap-2" id="filtros"></div>
+    <div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-x-auto">
+      <table class="w-full text-left text-sm">
+        <thead class="bg-surface-container-low font-mono text-[11px] uppercase text-on-surface-variant">
+          <tr><th class="p-4">Hora</th><th class="p-4">Nivel</th><th class="p-4">Origen</th><th class="p-4">Mensaje</th></tr></thead>
+        <tbody id="tbody" class="divide-y divide-surface-container"></tbody>
+      </table>
+    </div>
+  </section>
+
+  </div></main>
+</div>
+
 <script>
-const campos = {temperatura:"Temperatura (°C)", humedad:"Humedad (%)",
-                presion:"Presión (hPa)", viento:"Viento (km/h)"};
-const f = v => v === null || v === undefined ? "—" : v.toFixed(1);
-async function refresh(){
-  const r = await fetch('/api/promedios');
-  const d = await r.json();
-  const m = d["1min"] || {}, h = d["1h"] || {};
-  document.getElementById('tabla').innerHTML = Object.keys(campos).map(c =>
-    `<tr><td>${campos[c]}</td><td>${f(m[c])}</td><td>${f(h[c])}</td></tr>`).join('');
+const VARS={
+  temperatura:{n:'Temperatura',u:'°C',i:'thermostat',c:'#007bb9',warn:32},
+  humedad:{n:'Humedad relativa',u:'%',i:'humidity_mid',c:'#006c49'},
+  presion:{n:'Presión barométrica',u:'hPa',i:'compress',c:'#825100'},
+  viento:{n:'Viento',u:'km/h',i:'air',c:'#006194',warn:25}
+};
+const $=id=>document.getElementById(id);
+const f=v=>(v===null||v===undefined)?'—':Number(v).toFixed(1);
+let view='dashboard',chartVar='temperatura',detVar='temperatura',filtro='todos';
+let online=null,lastTotal=null,lastOk=null,total=null,prom={};
+const hist={},events=[],alerted={};
+Object.keys(VARS).forEach(k=>hist[k]=[]);
+
+const NIV={
+  ok:{t:'OK',cls:'bg-secondary-fixed text-on-secondary-fixed',dot:'bg-secondary'},
+  alerta:{t:'ALERTA',cls:'bg-tertiary-fixed text-on-tertiary-fixed',dot:'bg-tertiary'},
+  falla:{t:'FALLA',cls:'bg-error-container text-error',dot:'bg-error'}
+};
+function log(nivel,origen,msg){
+  events.unshift({t:new Date().toLocaleTimeString('es-MX',{hour12:false}),nivel,origen,msg});
+  if(events.length>200)events.pop();
 }
-setInterval(refresh, 3000); refresh();
+
+function setView(v){
+  view=v;
+  ['dashboard','detalle','bitacora'].forEach(x=>$('v-'+x).classList.toggle('hidden',x!==v));
+  document.querySelectorAll('.nav').forEach(b=>{
+    const on=b.dataset.view===v;
+    b.className='nav flex items-center gap-2 px-4 py-2 rounded-lg text-left '+
+      (on?'bg-primary-container text-white font-semibold shadow-sm':'text-on-surface-variant hover:bg-surface-container');
+  });
+  $('crumb').textContent={dashboard:'Dashboard',detalle:'Detalle',bitacora:'Bitácora'}[v];
+  render();
+}
+
+function chart(arr,color){
+  if(arr.length<2)return '<div class="h-full flex items-center justify-center text-sm text-on-surface-variant">Esperando datos…</div>';
+  let mn=Math.min(...arr),mx=Math.max(...arr);
+  if(mx-mn<0.5){mx+=0.25;mn-=0.25}
+  const W=1000,H=300,n=arr.length;
+  const line=arr.map((v,i)=>((i/(n-1))*W).toFixed(1)+','+(H-10-((v-mn)/(mx-mn))*(H-20)).toFixed(1)).join(' ');
+  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" class="w-full h-full">
+    <polygon points="0,${H} ${line} ${W},${H}" fill="${color}" fill-opacity="0.12"/>
+    <polyline points="${line}" fill="none" stroke="${color}" stroke-width="3" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg>
+    <span class="absolute left-2 top-1 font-mono text-xs text-on-surface-variant">${mx.toFixed(1)}</span>
+    <span class="absolute left-2 bottom-1 font-mono text-xs text-on-surface-variant">${mn.toFixed(1)}</span>`;
+}
+
+function tabs(sel,cur,fn){
+  $(sel).innerHTML=Object.keys(VARS).map(k=>`<button onclick="${fn}('${k}')" class="px-3 py-1 text-xs rounded-md ${k===cur?'bg-surface-container-lowest text-primary font-semibold shadow-sm':'text-on-surface-variant'}">${VARS[k].n.split(' ')[0]}</button>`).join('');
+}
+function pickChart(k){chartVar=k;render()}
+
+function eventRow(e){
+  const n=NIV[e.nivel];
+  return `<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container-low">
+    <div class="flex items-center gap-3 min-w-0"><span class="w-2 h-2 rounded-full ${n.dot} shrink-0"></span>
+    <div class="min-w-0"><div class="text-sm font-semibold truncate">${e.msg}</div>
+    <div class="font-mono text-[11px] text-on-surface-variant">${e.origen}</div></div></div>
+    <div class="flex items-center gap-2 shrink-0 ml-2"><span class="px-2 py-0.5 rounded font-mono text-[10px] font-semibold ${n.cls}">${n.t}</span>
+    <span class="font-mono text-[11px] text-on-surface-variant">${e.t}</span></div></div>`;
+}
+
+function render(){
+  // estado general
+  const on=online===true;
+  $('dot').className='w-2 h-2 rounded-full '+(online===null?'bg-outline':on?'bg-secondary':'bg-error');
+  $('nodo').textContent=online===null?'Conectando…':on?'Nodo Central: Activo':'Nodo Central: Sin conexión';
+  $('pill').className='inline-flex items-center gap-2 px-3 py-1 rounded-full font-mono text-[11px] font-semibold '+(on?'bg-secondary-fixed text-on-secondary-fixed':online===false?'bg-error-container text-error':'bg-surface-container-high');
+  $('pill').textContent=on?'● SISTEMA EN LÍNEA':online===false?'● SIN CONEXIÓN':'CONECTANDO…';
+
+  if(view==='dashboard'){
+    $('total').textContent=total===null?'—':total.toLocaleString('es-MX');
+    $('ultima').textContent=lastOk?lastOk.toLocaleTimeString('es-MX',{hour12:false}):'—';
+    $('cards').innerHTML=Object.keys(VARS).map(k=>{
+      const v=VARS[k],m=(prom['1min']||{})[k],h=(prom['1h']||{})[k];
+      return `<div class="bg-surface-container-lowest rounded-xl p-4 shadow-sm hover:shadow-md transition-all">
+        <div class="flex items-center gap-2 mb-3"><span class="material-symbols-outlined" style="color:${v.c}">${v.i}</span>
+        <span class="font-mono text-[11px] uppercase tracking-wider text-on-surface-variant">${v.n}</span></div>
+        <div class="flex items-baseline gap-1"><span class="font-mono text-4xl font-semibold">${f(m)}</span>
+        <span class="text-on-surface-variant">${v.u}</span></div>
+        <div class="text-xs text-on-surface-variant mt-1">Promedio 1 min</div>
+        <div class="mt-3 pt-3 border-t border-surface-container text-sm text-on-surface-variant">Prom. 1 h: <b class="font-mono text-on-surface">${f(h)} ${v.u}</b></div></div>`;
+    }).join('');
+    tabs('tabsDash',chartVar,'pickChart');
+    $('chartDash').innerHTML=chart(hist[chartVar].map(p=>p),VARS[chartVar].c);
+    $('recent').innerHTML=events.slice(0,3).map(eventRow).join('')||'<div class="text-sm text-on-surface-variant">Sin eventos todavía.</div>';
+  }
+
+  if(view==='detalle'){
+    if(!$('detSel').options.length)$('detSel').innerHTML=Object.keys(VARS).map(k=>`<option value="${k}">${VARS[k].n}</option>`).join('');
+    $('detSel').value=detVar;
+    const v=VARS[detVar],m=(prom['1min']||{})[detVar],h=(prom['1h']||{})[detVar],a=hist[detVar];
+    $('detTitle').textContent='Análisis detallado: '+v.n+' ('+v.u+')';
+    const kpi=(t,val,sub,color)=>`<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm relative overflow-hidden">
+      <div class="font-mono text-[11px] uppercase text-on-surface-variant mb-2">${t}</div>
+      <div class="flex items-baseline gap-1"><span class="font-mono text-3xl font-semibold">${f(val)}</span><span class="text-on-surface-variant">${v.u}</span></div>
+      <div class="text-xs text-on-surface-variant mt-2">${sub}</div>
+      <div class="absolute bottom-0 left-0 right-0 h-1" style="background:${color}"></div></div>`;
+    $('detCards').innerHTML=kpi('Promedio 1 minuto',m,'Calculado por el agregador',v.c)+
+      kpi('Promedio 1 hora',h,'Calculado por el agregador','#006194')+
+      kpi('Mínimo (sesión)',a.length?Math.min(...a):null,a.length+' muestras desde que abriste la página','#bfc7d2')+
+      kpi('Máximo (sesión)',a.length?Math.max(...a):null,v.warn?'Umbral de alerta: '+v.warn+' '+v.u:'Sin umbral configurado','#825100');
+    $('chartDet').innerHTML=chart(a,v.c);
+  }
+
+  if(view==='bitacora'){
+    const cnt=n=>events.filter(e=>e.nivel===n).length;
+    const fb=(k,l,n)=>`<button onclick="filtro='${k}';render()" class="px-4 py-1.5 rounded-lg text-sm ${filtro===k?'bg-primary text-on-primary font-semibold':'bg-surface-container hover:bg-surface-container-high'}">${l} <span class="font-mono text-xs opacity-80">${n}</span></button>`;
+    $('filtros').innerHTML='<span class="font-mono text-[11px] uppercase text-on-surface-variant mr-2">Filtrar:</span>'+
+      fb('todos','Todos',events.length)+fb('ok','OK',cnt('ok'))+fb('alerta','Alerta',cnt('alerta'))+fb('falla','Falla',cnt('falla'));
+    const rows=events.filter(e=>filtro==='todos'||e.nivel===filtro);
+    $('tbody').innerHTML=rows.map(e=>`<tr class="hover:bg-surface-container-low">
+      <td class="p-4 font-mono whitespace-nowrap">${e.t}</td>
+      <td class="p-4"><span class="px-2 py-1 rounded font-mono text-[11px] font-semibold ${NIV[e.nivel].cls}">${NIV[e.nivel].t}</span></td>
+      <td class="p-4 font-mono text-xs text-primary">${e.origen}</td><td class="p-4">${e.msg}</td></tr>`).join('')
+      ||'<tr><td colspan="4" class="p-6 text-center text-on-surface-variant">Sin eventos.</td></tr>';
+  }
+}
+
+async function poll(){
+  try{
+    const [p,m]=await Promise.all([
+      fetch('/api/promedios').then(r=>{if(!r.ok)throw 0;return r.json()}),
+      fetch('/metrics').then(r=>r.text())]);
+    if(online===false)log('ok','API','Conexión con la API recuperada');
+    online=true;lastOk=new Date();prom=p;
+    const mt=m.match(/estacion_lecturas_total\s+(\d+)/);
+    if(mt){
+      total=parseInt(mt[1]);
+      if(lastTotal!==null&&total<lastTotal)
+        log('falla','Supervisor','Procesos reiniciados por el supervisor (rest_for_one): ETS recreada, contador en '+total);
+      lastTotal=total;
+    }
+    const um=p['1min']||{};
+    Object.keys(VARS).forEach(k=>{
+      const v=um[k];
+      if(typeof v==='number'){
+        hist[k].push(v);if(hist[k].length>120)hist[k].shift();
+        const w=VARS[k].warn;
+        if(w&&v>w&&!alerted[k]){alerted[k]=true;log('alerta','Umbral',VARS[k].n+' fuera de rango: '+v.toFixed(1)+' '+VARS[k].u+' (límite '+w+')');}
+        if(w&&v<=w)alerted[k]=false;
+      }
+    });
+  }catch(e){
+    if(online!==false)log('falla','API','Sin respuesta de la API');
+    online=false;
+  }
+  render();
+}
+
+setInterval(()=>{ $('sync').textContent=lastOk?'Última sync: hace '+Math.round((Date.now()-lastOk)/1000)+' seg':'Última sync: —'; },1000);
+log('ok','Interfaz','Dashboard iniciado');
+setView('dashboard');
+poll();setInterval(poll,3000);
 </script>
-</body>
-</html>
+</body></html>
